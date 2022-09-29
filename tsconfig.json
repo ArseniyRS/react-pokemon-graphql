@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "esnext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "removeComments": true,
+    "baseUrl": ".",
+    "downlevelIteration": true,
+    "paths": {
+      "~/*": ["./src/*"],
+    },
+    "noImplicitAny": false,
+    "types": ["vite-plugin-svgr/client", "@types/jest", "@testing-library/jest-dom"]
+  },
+  "exclude": ["node_modules", "build"],
+  "include": ["src", "vite.config.ts"]
+}

@@ -1,0 +1,16 @@
+query pokemon($id: String, $name: String) {
+  pokemon(id: $id, name: $name) {
+    attacks {
+      fast {
+        name
+        type
+        damage
+      }
+      special {
+        name
+        type
+        damage
+      }
+    }
+  }
+}

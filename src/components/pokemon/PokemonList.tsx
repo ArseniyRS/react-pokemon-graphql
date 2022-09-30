@@ -1,13 +1,14 @@
 import React from "react";
 import { Flex, Spinner, useToast } from "@chakra-ui/react";
-import { GET_POKEMONS_FOR_CARD } from "~/graphql/query/pockemons";
 import { useQueryState } from "~/hooks/useQueryState";
+import getPockemonsForCard from "~/graphql/query/pokemonsForCard.graphql";
 import PokemonCard from "./PokemonCard";
+import { IPokemonList } from "./pokemon.interface";
 
 function PokemonList() {
   const toast = useToast();
-  const [data, loading, error] = useQueryState<{ pokemons: [] }, { pokemons: any[] }>(
-    GET_POKEMONS_FOR_CARD,
+  const [data, loading, error] = useQueryState<{ pokemons: [] }, IPokemonList>(
+    getPockemonsForCard,
     {
       variables: { first: 10 },
     },

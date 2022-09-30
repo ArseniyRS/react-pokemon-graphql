@@ -1,7 +1,8 @@
 import { Box, Spinner, Text, useBoolean } from "@chakra-ui/react";
 import React from "react";
-import { GET_POKEMON_ATTACK } from "~/graphql/query/pockemons";
 import { useQueryState } from "~/hooks/useQueryState";
+import getPockemonAttack from "~/graphql/query/pokemonAttack.graphql";
+import { IPokemon, IPokemonAttack } from "./pokemon.interface";
 
 const defaultState = {
   pokemon: {
@@ -11,7 +12,8 @@ const defaultState = {
     },
   },
 };
-function PokemonCard({ id, name, image }) {
+
+function PokemonCard({ id, name, image }: IPokemon) {
   const [hover, setHover] = useBoolean();
   const [
     {
@@ -19,8 +21,8 @@ function PokemonCard({ id, name, image }) {
     },
     loading,
     error,
-  ] = useQueryState<typeof defaultState, any>(
-    GET_POKEMON_ATTACK,
+  ] = useQueryState<typeof defaultState, IPokemonAttack>(
+    getPockemonAttack,
     {
       variables: { id, name },
       skip: !hover,
@@ -28,7 +30,7 @@ function PokemonCard({ id, name, image }) {
     defaultState,
   );
   const fastAttacks = fast.map((attack) => <Box />);
-  const specialAttacks = fast.map((attack) => <Box />);
+  const specialAttacks = special.map((attack) => <Box />);
 
   const renderAttacks = () => {
     if (loading) {
